@@ -26,7 +26,9 @@ export default function Home() {
 
                 <button onClick={handleLogout}>Log out</button>
             </div>
-            <DepartmentOptions/>
+            <div style={{ padding: 50 }}>
+                <DepartmentOptions/>
+            </div>
         </>
     )
 }

@@ -6,10 +6,28 @@ import CreatePost from "./Common/CreatePost";
 import { Link, Route } from "react-router-dom";
 
 
-export default function PostList({post}) {
+export default function PostList() {
     const [postsList, setPostsList] = useState([]);
-    const postsRef = collection(db, "posts");
+    const [categoryId, setCategoryId] = useState([]);
+
+    const catRef = query(collection(db, 'categories'))
+
+    const getCategoryId = async () => {
+        const data = await getDocs(catRef) 
+        try {
+            setCategoryId(
+                data.docs.map((doc) => ({id: doc.id}))
+            );
+        } catch(err){
+            console.log(err)
+        }
+    }
+    
+
+    const postsRef = query(collection(db, 'posts'), where('category', '==', "V2xsWyzKoKtVbOHxvPY9"))
+
     const getPosts = async () => {
+        console.log(categoryId)
         const data = await getDocs(postsRef)
         try {
             setPostsList(
@@ -19,21 +37,22 @@ export default function PostList({post}) {
             console.log(err)
         }
     }
+
    
     useEffect(() => {
+        getCategoryId([]);
         getPosts();
-
     }, [])
     return (
         <>
             {postsList?.map((post) => (
-                <>
+                <div>
                     {/* <Link path={`/post/${post.id}`}> */}
                         <div>{post.title}</div>
                         <div>{post.details}</div>
                         <div>{post.category}</div>
                     {/* </Link> */}
-                </>
+                </div>
             ))}
         </>
     )
