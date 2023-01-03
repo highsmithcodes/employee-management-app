@@ -11,10 +11,15 @@ import { app } from './firebase-config';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import DepartmentBody from './Components/DepartmentBody';
+import { collection, addDoc, getDocs, doc, where, query, onSnapshot } from "firebase/firestore"; 
+import { db } from "./firebase-config";
+import { useParams } from "react-router-dom";
 
 function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const {id} = useParams()
   let navigate = useNavigate();
 
   const handleAction = (id) => {
@@ -51,12 +56,28 @@ function App() {
     }
   }
 
+  const [postsList, setPostsList] = useState([]);
+  const postsRef = collection(db, "departments");
+    
+  const getPosts = async () => {
+      const data = await getDocs(postsRef)
+      try {
+          setPostsList(
+              data.docs.map((doc) => ({...doc.data(), id: doc.id}))
+          );
+      } catch(err){
+          console.log(err)
+      }
+  }
   useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token')
 
     if (authToken) {
       navigate('/home')
     }
+    getPosts();
+
+
   }, [])
 
   return (
@@ -85,11 +106,13 @@ function App() {
               />}
           />
 
-          <Route
-            path='/home'
-            element={
-              <Home />}
-          />
+          <Route path='/home' element={ <Home />}/>
+          
+          {postsList?.map((post) => (
+              // <Post post={post}/>
+              <Route path={`/departments/${post.id}`} element={<DepartmentBody post={post} />} />
+          ))}
+
         </Routes>
       </>
     </div>

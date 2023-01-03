@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import DepartmentOptions from '../Components/DepartmentOptions';
 
 export default function Home() {
     const handleLogout = () => {
@@ -9,7 +10,7 @@ export default function Home() {
     let navigate = useNavigate();
     useEffect(() => {
         let authToken = sessionStorage.getItem('Auth Token')
-        console.log(authToken)
+        // console.log(authToken)
         if (authToken) {
             navigate('/home')
         }
@@ -19,10 +20,13 @@ export default function Home() {
         }
     }, [])
     return (
-        <div>
-            Home Page
+        <>
+            <div>
+                Home Page
 
-            <button onClick={handleLogout}>Log out</button>
-        </div>
+                <button onClick={handleLogout}>Log out</button>
+            </div>
+            <DepartmentOptions/>
+        </>
     )
 }
