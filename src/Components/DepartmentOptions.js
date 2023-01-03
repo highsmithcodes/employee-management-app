@@ -31,7 +31,7 @@ export default function DepartmentOptions() {
              {postsList?.map((post) => (
                 <li key={post.id}>
                     <Link to={ '/departments/' + `${post.id}` }>
-                        {post.id}
+                        {post.departmentName}
                     </Link>
                 </li>
             ))}

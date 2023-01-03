@@ -12,14 +12,20 @@ import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } f
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DepartmentBody from './Components/DepartmentBody';
-import { collection, addDoc, getDocs, doc, where, query, onSnapshot } from "firebase/firestore"; 
+import { collection, addDoc, getDocs, doc, setDoc, where, query, onSnapshot } from "firebase/firestore"; 
 import { db } from "./firebase-config";
 import { useParams } from "react-router-dom";
+import CreatePost from './Components/Common/CreatePost';
+import PostList from './Components/PostList';
 
 function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const {id} = useParams()
+  const [departmentList, setDepartmentList] = useState([]);
+  const [postsList, setPostsList] = useState([]);
+  const [title, setTitle] = useState('');
+  const [details, setDetails] = useState('');
+  // const {id} = useParams()
   let navigate = useNavigate();
 
   const handleAction = (id) => {
@@ -54,11 +60,37 @@ function App() {
           }
         })
     }
+
   }
 
-  const [postsList, setPostsList] = useState([]);
-  const postsRef = collection(db, "departments");
-    
+ 
+  const publishPost = async(data) => {
+      try {
+        const docRef = await addDoc(collection(db, "posts"), {
+          ...data,
+          title: title,
+          details: details,
+        });
+        console.log("Document written with ID: ", docRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+  }
+
+
+  const departmentsRef = collection(db, "departments");
+  const getDepartments = async () => {
+      const data = await getDocs(departmentsRef)
+      try {
+          setDepartmentList(
+              data.docs.map((doc) => ({...doc.data(), id: doc.id}))
+          );
+      } catch(err){
+          console.log(err)
+      }
+  }
+
+  const postsRef = collection(db, "posts");
   const getPosts = async () => {
       const data = await getDocs(postsRef)
       try {
@@ -69,14 +101,18 @@ function App() {
           console.log(err)
       }
   }
+
+
+
   useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token')
 
     if (authToken) {
       navigate('/home')
     }
+    getDepartments();
     getPosts();
-
+    // publishPost();
 
   }, [])
 
@@ -108,10 +144,25 @@ function App() {
 
           <Route path='/home' element={ <Home />}/>
           
+          {departmentList?.map((post) => (
+              // <Post post={post}/>
+              <Route path={`/departments/${post.id}`} element={<DepartmentBody post={post}  />} />
+          ))}
+
           {postsList?.map((post) => (
               // <Post post={post}/>
-              <Route path={`/departments/${post.id}`} element={<DepartmentBody post={post} />} />
+              <Route path={`/post/${post.id}`} element={<PostList post={post}  />} />
           ))}
+
+          <Route
+            path='/posts'
+            element={
+              <CreatePost
+                setTitle={setTitle}
+                setDetails={setDetails}
+                handleAction={() => publishPost()}
+              />}
+          />  
 
         </Routes>
       </>

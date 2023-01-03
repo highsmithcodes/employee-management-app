@@ -1,11 +1,12 @@
 import { collection, addDoc, getDocs, doc, where, query, onSnapshot } from "firebase/firestore"; 
 import { db } from "../firebase-config";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import CreatePost from "./Common/CreatePost";
 import { Link, Route } from "react-router-dom";
-import PostList from "./PostList";
 
 
-export default function DepartmentBody({post}) {
+export default function PostList({post}) {
     const [postsList, setPostsList] = useState([]);
     const postsRef = collection(db, "posts");
     const getPosts = async () => {
@@ -24,13 +25,15 @@ export default function DepartmentBody({post}) {
 
     }, [])
     return (
-        <div>
-            <h1>{post.departmentName}</h1>
-            <div className="float-left">Team-Lead: {post.teamLead} <p>More Details to Come</p></div>
-            <div className="float-right">
-                <PostList />
-                <Link to="/posts/">Posts</Link>
-            </div>
-        </div>
+        <>
+            {postsList?.map((post) => (
+                <>
+                    <Link path={`/post/${post.id}`}>
+                        <div>{post.title}</div>
+                        <div>{post.details}</div>
+                    </Link>
+                </>
+            ))}
+        </>
     )
 }
