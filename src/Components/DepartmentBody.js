@@ -29,7 +29,7 @@ export default function DepartmentBody({post}) {
             <div className="float-left">Team-Lead: {post.teamLead} <p>More Details to Come</p></div>
             <div className="float-right">
                 <PostList />
-                <Link to="/posts/">Posts</Link>
+                <Link to="/create-post/">Create</Link>
             </div>
         </div>
     )

@@ -25,6 +25,7 @@ function App() {
   const [postsList, setPostsList] = useState([]);
   const [title, setTitle] = useState('');
   const [details, setDetails] = useState('');
+  const [category, setCategory] = useState('');
   // const {id} = useParams()
   let navigate = useNavigate();
 
@@ -70,6 +71,7 @@ function App() {
           ...data,
           title: title,
           details: details,
+          category: category
         });
         console.log("Document written with ID: ", docRef.id);
       } catch (e) {
@@ -155,14 +157,16 @@ function App() {
           ))}
 
           <Route
-            path='/posts'
+            path='/create-post'
             element={
               <CreatePost
                 setTitle={setTitle}
                 setDetails={setDetails}
+                setCategory={setCategory}
                 handleAction={() => publishPost()}
               />}
           />  
+
 
         </Routes>
       </>

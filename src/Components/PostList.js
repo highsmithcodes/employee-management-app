@@ -28,10 +28,11 @@ export default function PostList({post}) {
         <>
             {postsList?.map((post) => (
                 <>
-                    <Link path={`/post/${post.id}`}>
+                    {/* <Link path={`/post/${post.id}`}> */}
                         <div>{post.title}</div>
                         <div>{post.details}</div>
-                    </Link>
+                        <div>{post.category}</div>
+                    {/* </Link> */}
                 </>
             ))}
         </>
