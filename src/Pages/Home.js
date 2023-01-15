@@ -21,12 +21,8 @@ export default function Home() {
     }, [])
     return (
         <>
-            <div>
+            <div style={{ padding: 50 }} className="main">
                 Home Page
-
-                <button onClick={handleLogout}>Log out</button>
-            </div>
-            <div style={{ padding: 50 }}>
                 <DepartmentOptions/>
             </div>
         </>

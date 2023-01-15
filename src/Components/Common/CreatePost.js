@@ -34,25 +34,23 @@ function CreatePost({setTitle, setDetails, handleAction, setCategory}) {
     }, [])
 
   return (
-    <div className="App">
+    <div className="main">
 
         <div>
-
+            <div className='h1'>Create New Post</div>
             <Box
                 component="form"
-                sx={{
-                    '& > :not(style)': { m: 1, width: '25ch' },
-                }}
                 noValidate
-                autoComplete="off"
+                autoComplete="off" className='create-new-form'
             >
                 <TextField id="post-title" label="Enter Title" variant="outlined" onChange={(e) => setTitle(e.target.value)} />
                 
-                <TextField id="Details" label="Enter Details" variant="outlined" onChange={(e) => setDetails(e.target.value)} />
+                <TextField id="Details" label="Enter Details" multiline
+          rows={4} variant="outlined" onChange={(e) => setDetails(e.target.value)} />
 
                 <div>
                     <FormControl sx={{ m: 1, minWidth: 120 }}>
-                        <InputLabel id="demo-simple-select-helper-label">Age</InputLabel>
+                        <InputLabel id="demo-simple-select-helper-label">Choose Category</InputLabel>
 
                         <Select
                         labelId="demo-simple-select-helper-label"

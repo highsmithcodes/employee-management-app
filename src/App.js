@@ -17,6 +17,7 @@ import { db } from "./firebase-config";
 import { useParams } from "react-router-dom";
 import CreatePost from './Components/Common/CreatePost';
 import PostList from './Components/PostList';
+import Nav from './Components/Common/Nav';
 
 function App() {
   const [email, setEmail] = useState('');
@@ -121,6 +122,7 @@ function App() {
   return (
     <div className="App">
       <>
+        <Nav />
         <Routes>
           <Route
             path='/login'

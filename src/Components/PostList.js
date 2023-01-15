@@ -46,11 +46,11 @@ export default function PostList() {
     return (
         <>
             {postsList?.map((post) => (
-                <div>
+                <div className="post">
                     {/* <Link path={`/post/${post.id}`}> */}
-                        <div>{post.title}</div>
-                        <div>{post.details}</div>
-                        <div>{post.category}</div>
+                        <div className="title">Title:{post.title}</div>
+                        <div className="details">Details:{post.details}</div>
+                        <div className="categories">Category:{post.category}</div>
                     {/* </Link> */}
                 </div>
             ))}

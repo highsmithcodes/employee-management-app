@@ -27,10 +27,10 @@ export default function DepartmentOptions() {
     })
 
     return (
-        <ul style={{ color: 'blue', display: 'flex',flexDirection: 'row', padding: 50, alignItems: 'center', justifyContent: 'center', listStyle: 'none' }}>
+        <ul>
              {postsList?.map((post) => (
-                <li key={post.id} style={{ padding:20,background:'#000', margin: 40, color: '#fff'}} >
-                    <Link to={ '/departments/' + `${post.id}` }  style={{color: '#fff', textDecoration: 'none', fontWeight: 'bold'}}>
+                <li key={post.id}>
+                    <Link className='button' to={ '/departments/' + `${post.id}` }  style={{color: '#fff', textDecoration: 'none', fontWeight: 'bold'}}>
                         {post.departmentName}
                     </Link>
                 </li>
