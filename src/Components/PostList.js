@@ -24,7 +24,7 @@ export default function PostList() {
     }
     
 
-    const postsRef = query(collection(db, 'posts'), where('category', '==', "V2xsWyzKoKtVbOHxvPY9"))
+    const postsRef = query(collection(db, 'posts'), where('category', '==', "wqmfzG9gcOpb55n1LIdO"))
 
     const getPosts = async () => {
         console.log(categoryId)
@@ -32,7 +32,7 @@ export default function PostList() {
         try {
             setPostsList(
                 data.docs.map((doc) => ({...doc.data(), id: doc.id}))
-            );
+            ); 
         } catch(err){
             console.log(err)
         }

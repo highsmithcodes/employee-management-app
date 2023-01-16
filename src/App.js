@@ -74,6 +74,7 @@ function App() {
           details: details,
           category: category
         });
+        navigate('/home');
         console.log("Document written with ID: ", docRef.id);
       } catch (e) {
         console.error("Error adding document: ", e);

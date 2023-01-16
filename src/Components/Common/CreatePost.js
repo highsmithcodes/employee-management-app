@@ -8,16 +8,21 @@ import FormControl from '@mui/material/FormControl';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import   {useNavigate
+} from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { Link, Route } from "react-router-dom";
 import { collection, addDoc, getDocs, doc, where, query, onSnapshot } from "firebase/firestore"; 
 import { db } from "../../firebase-config";
 
-function CreatePost({setTitle, setDetails, handleAction, setCategory}) {
-
+function CreatePost({setTitle, handleAction, setDetails, setCategory}) {
+    let navigate = useNavigate();
     const [categoryList, setCategoryList] = useState([]);
     const [categoryId, setCategoryId] = useState([]);
+    const [departmentList, setDepartmentList] = useState([]);
+    const [departmentId, setDepartmentId] = useState([]);
     const categoryRef = collection(db, "categories");
+    const departmentRef = collection(db, "departments");
     const getCategories = async () => {
         const data = await getDocs(categoryRef)
         try {
@@ -29,8 +34,20 @@ function CreatePost({setTitle, setDetails, handleAction, setCategory}) {
         }
     } 
 
+    const getDepartments = async () => {
+        const data = await getDocs(departmentRef)
+        try {
+            setDepartmentList(
+                data.docs.map((doc) => ({...doc.data(), id: doc.id}))
+            );
+        } catch(err){
+            console.log(err)
+        }
+    } 
+
     useEffect(() => {
         getCategories();
+        getDepartments();
     }, [])
 
   return (
@@ -69,6 +86,27 @@ function CreatePost({setTitle, setDetails, handleAction, setCategory}) {
                             ))}
 
                         </Select>
+                        
+                    </FormControl>
+                    <FormControl>
+                    <InputLabel id="dept-label">Choose Department</InputLabel>
+
+                    <Select
+                    labelId="dept-label"
+                    // needs access to category id
+                    value={departmentId}
+                    label="Department"
+                    onChange={(e) => setDepartmentId(e.target.value)}
+                    >
+                        <MenuItem value="">
+                            <em>None</em>
+                        </MenuItem>
+
+                        {departmentList?.map((department) => (
+                            <MenuItem value={department.id}>{department.departmentName}</MenuItem>
+                        ))}
+
+                    </Select>
                     </FormControl>
                 </div>
 
