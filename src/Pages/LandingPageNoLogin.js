@@ -1,22 +1,81 @@
-
+import { Container } from "@mui/material"
+import * as React from 'react';
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import { spacing } from '@mui/system'; 
+import Button from "@mui/material/Button";
 
 export default function LandingPageNoLogin() {
+
+    const Item = styled(Paper)(({ theme }) => ({
+        backgroundColor: theme.palette.primary.dark,
+        ...theme.typography.body2,
+        padding: theme.spacing(1),
+        textAlign: 'center',
+        color: theme.palette.text.light,
+      }));
 
     return (
         <>
             <div className="hero">
-                <h1>Kept</h1>
-                <div className="small-title">Keep your team organized with a knowledge base</div>
+                <Container maxWidth="lg" flex-end>
+                    <Typography variant="h1">Kept</Typography>
+                    <div className="small-title">Keep your team organized with a knowledge base</div>
+                </Container>
             </div>
 
-            <div className="pricing-table">
-                <h2>Pricing</h2>
+
+            <Container maxWidth="lg" style={{
+                paddingTop: "120px",
+                paddingBottom: '120px',
+                textAlign: 'center'
+            }}>
+                <Typography variant="h2">Pricing</Typography>
                 <div className="pricing-options">
-                    <div className="price">
-                        
-                    </div>
+                    <Grid container spacing={5} marginTop={5}>
+                        <Grid item xs>
+                            <Item style={{
+                                padding: "40px",
+                            }}>
+                                <Typography variant="h5">Individual</Typography>
+                                <p>$0 seat/month</p>
+                                <Button href="/register" style={{
+                                    backgroundColor: "#fff",
+                                    textAlign: 'center'
+                                }}>Choose Option</Button>
+                            </Item>
+                        </Grid>
+                        <Grid item xs>
+                            <Item style={{
+                                padding: "40px",
+                            }}>
+                                <Typography variant="h5">Basic</Typography>
+                                <p>$0 seat/month</p>
+                                <Button href="/register" style={{
+                                    backgroundColor: "#fff",
+                                    textAlign: 'center'
+                                }}>Choose Option</Button>
+                            </Item>
+                        </Grid>
+                        <Grid item xs>
+                            <Item style={{
+                                padding: "40px",
+                            }}>
+                                <Typography variant="h5">Standard</Typography>
+                                <p>$0 seat/month</p>
+                                <Button href="/register" style={{
+                                    backgroundColor: "#fff",
+                                    textAlign: 'center'
+                                }}>Choose Option</Button>
+                            </Item>
+                        </Grid>
+                    </Grid>
                 </div>
-            </div>
+            </Container>
+
         </>
     )
 }

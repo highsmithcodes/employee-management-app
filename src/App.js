@@ -20,15 +20,20 @@ import CreatePost from './Components/Common/CreatePost';
 import PostList from './Components/PostList';
 import Nav from './Components/Common/Nav';
 import NewSignup from './Pages/NewSignup';
+import FormRegister from './Components/Common/FormRegister';
+
 
 function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [accountName, setAccountName] = useState('');
   const [departmentList, setDepartmentList] = useState([]);
   const [postsList, setPostsList] = useState([]);
   const [title, setTitle] = useState('');
   const [details, setDetails] = useState('');
   const [category, setCategory] = useState('');
+
   // const {id} = useParams()
   let navigate = useNavigate();
 
@@ -64,8 +69,37 @@ function App() {
           }
         })
     }
-
   }
+
+  const publishUser = async(data) => {
+      const auth = getAuth();
+      const user = auth.currentUser;
+      const uid = user.uid;
+      // if (user !== null) {
+      //     const uid = user.uid;
+      //     console.log(uid);
+      // }
+    
+      try {
+        const docRef = await addDoc(collection(db, "users"), {
+          ...data,
+          userId: uid,
+          fullName: fullName,
+          accountName: accountName,
+        });
+        const companyRef = await addDoc(collection(db, "companies"), {
+          ...data,
+          accountName: accountName,
+        });
+        navigate('/home');
+       
+        console.log("Document written with ID: ", docRef.id);
+        console.log("Document written with ID: ", companyRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+  }
+
 
  
   const publishPost = async(data) => {
@@ -113,13 +147,10 @@ function App() {
   useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token')
 
-    if (authToken) {
-      navigate('/home')
-    }
+    // if (authToken) {
+    //   navigate('/home')
+    // }
     getDepartments();
-    getPosts();
-    // publishPost();
-
   }, [])
 
   return (
@@ -152,7 +183,16 @@ function App() {
               />}
           />
 
-          <Route path="/introduction" element={<NewSignup />} />
+          <Route 
+            path="/introduction" 
+            element={
+              <NewSignup 
+                setFullName={setFullName}
+                setAccountName={setAccountName}
+                handleAction={() => publishUser()}
+              />
+            } 
+          />
 
           <Route path='/home' element={ <Home />}/>
           
