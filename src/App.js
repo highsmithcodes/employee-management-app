@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import Form from './Components/Common/Form';
 import Home from './Pages/Home';
+import LandingPageNoLogin from './Pages/LandingPageNoLogin';
 import {
   Routes,
   Route,
@@ -18,6 +19,7 @@ import { useParams } from "react-router-dom";
 import CreatePost from './Components/Common/CreatePost';
 import PostList from './Components/PostList';
 import Nav from './Components/Common/Nav';
+import NewSignup from './Pages/NewSignup';
 
 function App() {
   const [email, setEmail] = useState('');
@@ -53,7 +55,7 @@ function App() {
     if (id === 2) {
       createUserWithEmailAndPassword(authentication, email, password)
         .then((response) => {
-          navigate('/home')
+          navigate('/introduction')
           sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
         })
         .catch((error) => {
@@ -125,6 +127,10 @@ function App() {
       <>
         <Nav />
         <Routes>
+          <Route 
+            path="/"
+            element={<LandingPageNoLogin />}
+          />
           <Route
             path='/login'
             element={
@@ -143,9 +149,10 @@ function App() {
                 setEmail={setEmail}
                 setPassword={setPassword}
                 handleAction={() => handleAction(2)}
-                
               />}
           />
+
+          <Route path="/introduction" element={<NewSignup />} />
 
           <Route path='/home' element={ <Home />}/>
           
