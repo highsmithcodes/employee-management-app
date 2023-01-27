@@ -27,7 +27,7 @@ function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
-  const [accountName, setAccountName] = useState('');
+  const [companyName, setCompanyName] = useState('');
   const [departmentList, setDepartmentList] = useState([]);
   const [postsList, setPostsList] = useState([]);
   const [title, setTitle] = useState('');
@@ -71,6 +71,19 @@ function App() {
     }
   }
 
+  // For Evey New User Add them to the Company Collection
+  // And Update the Company count
+
+  // New Firestore Collections With Relationships
+
+  // Company 
+  // - Users
+  // - Departments
+  // - Posts
+  // -- Post Categories
+
+  // Not sure if you need an aggregation query
+
   const publishUser = async(data) => {
       const auth = getAuth();
       const user = auth.currentUser;
@@ -82,14 +95,14 @@ function App() {
     
       try {
         const docRef = await addDoc(collection(db, "users"), {
-          ...data,
-          userId: uid,
+          id: uid,
           fullName: fullName,
-          accountName: accountName,
+          company: companyName,
         });
         const companyRef = await addDoc(collection(db, "companies"), {
           ...data,
-          accountName: accountName,
+          companyName: companyName,
+          accountAdminId: uid,
         });
         navigate('/home');
        
@@ -150,6 +163,7 @@ function App() {
     // if (authToken) {
     //   navigate('/home')
     // }
+    // getPosts();
     getDepartments();
   }, [])
 
@@ -188,7 +202,7 @@ function App() {
             element={
               <NewSignup 
                 setFullName={setFullName}
-                setAccountName={setAccountName}
+                setCompanyName={setCompanyName}
                 handleAction={() => publishUser()}
               />
             } 

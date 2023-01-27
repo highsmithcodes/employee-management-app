@@ -6,7 +6,7 @@ import { Container, Typography } from "@mui/material"
 import Grid from '@mui/material/Grid';
 
 
-export default function NewSignup({ setFullName, setAccountName, handleAction }) {
+export default function NewSignup({ setFullName, setCompanyName, handleAction }) {
     
     return(
         <Container maxWidth="lg" centered style={{
@@ -39,10 +39,10 @@ export default function NewSignup({ setFullName, setAccountName, handleAction })
                         onChange={(e) => setFullName(e.target.value)}
                     />
                     <TextField
-                        id="account-name"
-                        label="Account Name"
+                        id="company-name"
+                        label="Company Name"
                         variant="outlined"
-                        onChange={(e) => setAccountName(e.target.value)}
+                        onChange={(e) => setCompanyName(e.target.value)}
                     />
                 </Box>
 
