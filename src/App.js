@@ -28,14 +28,11 @@ function App() {
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
   const [companyName, setCompanyName] = useState('');
-  const [departmentList, setDepartmentList] = useState([]);
   const [postsList, setPostsList] = useState([]);
-  const [title, setTitle] = useState('');
-  const [details, setDetails] = useState('');
-  const [category, setCategory] = useState('');
+  const [ postInfo, setPostInfo] = useState([{}]);
 
-  // const {id} = useParams()
   let navigate = useNavigate();
+  const auth = getAuth();
 
   const handleAction = (id) => {
     const authentication = getAuth();
@@ -71,27 +68,9 @@ function App() {
     }
   }
 
-  // For Evey New User Add them to the Company Collection
-  // And Update the Company count
-
-  // New Firestore Collections With Relationships
-
-  // Company 
-  // - Users
-  // - Departments
-  // - Posts
-  // -- Post Categories
-
-  // Not sure if you need an aggregation query
-
   const publishUser = async(data) => {
-      const auth = getAuth();
       const user = auth.currentUser;
       const uid = user.uid;
-      // if (user !== null) {
-      //     const uid = user.uid;
-      //     console.log(uid);
-      // }
     
       try {
         const docRef = await addDoc(collection(db, "users"), {
@@ -113,58 +92,35 @@ function App() {
       }
   }
 
+  // const departmentsRef = collection(db, "departments");
+  // const getDepartments = async () => {
+  //     const data = await getDocs(departmentsRef)
+  //     try {
+  //         setDepartmentList(
+  //             data.docs.map((doc) => ({...doc.data(), id: doc.id}))
+  //         );
+  //     } catch(err){
+  //         console.log(err)
+  //     }
+  // }
 
- 
-  const publishPost = async(data) => {
-      try {
-        const docRef = await addDoc(collection(db, "posts"), {
-          ...data,
-          title: title,
-          details: details,
-          category: category
-        });
-        navigate('/home');
-        console.log("Document written with ID: ", docRef.id);
-      } catch (e) {
-        console.error("Error adding document: ", e);
-      }
-  }
-
-
-  const departmentsRef = collection(db, "departments");
-  const getDepartments = async () => {
-      const data = await getDocs(departmentsRef)
-      try {
-          setDepartmentList(
-              data.docs.map((doc) => ({...doc.data(), id: doc.id}))
-          );
-      } catch(err){
-          console.log(err)
-      }
-  }
-
-  const postsRef = collection(db, "posts");
-  const getPosts = async () => {
-      const data = await getDocs(postsRef)
-      try {
-          setPostsList(
-              data.docs.map((doc) => ({...doc.data(), id: doc.id}))
-          );
-      } catch(err){
-          console.log(err)
-      }
-  }
+  // const postsRef = collection(db, "posts");
+  // const getPosts = async () => {
+  //     const data = await getDocs(postsRef)
+  //     try {
+  //         setPostsList(
+  //             data.docs.map((doc) => ({...doc.data(), id: doc.id}))
+  //         );
+  //     } catch(err){
+  //         console.log(err)
+  //     }
+  // }
 
 
 
   useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token')
-
-    // if (authToken) {
-    //   navigate('/home')
-    // }
-    // getPosts();
-    getDepartments();
+    // getDepartments();
   }, [])
 
   return (
@@ -210,7 +166,7 @@ function App() {
 
           <Route path='/home' element={ <Home />}/>
           
-          {departmentList?.map((post) => (
+          {/* {departmentList?.map((post) => (
               // <Post post={post}/>
               <Route path={`/departments/${post.id}`} element={<DepartmentBody post={post}  />} />
           ))}
@@ -218,18 +174,15 @@ function App() {
           {postsList?.map((post) => (
               // <Post post={post}/>
               <Route path={`/post/${post.id}`} element={<PostList post={post}  />} />
-          ))}
+          ))} */}
 
-          <Route
-            path='/create-post'
+
+          <Route 
+            path="/create-post" 
             element={
-              <CreatePost
-                setTitle={setTitle}
-                setDetails={setDetails}
-                setCategory={setCategory}
-                handleAction={() => publishPost()}
-              />}
-          />  
+              <CreatePost />
+            } 
+          />
 
 
         </Routes>

@@ -5,42 +5,31 @@ import { Container, Typography } from "@mui/material"
 import Grid from '@mui/material/Grid';
 import { getAuth } from 'firebase/auth';
 import { collection, addDoc, getDocs, doc, setDoc, where, query, onSnapshot } from "firebase/firestore"; 
+import { getUsers } from "../firebase-config";
+import CreatePost  from '../Components/Common/CreatePost';
 import { db } from "../firebase-config";
 
-export default function Home() {
 
-    // const [ userInfo, setUserInfo] = useState('');
+export default function Home() {
+    //     let navigate = useNavigate();
+    const auth = getAuth();
+    const [ userInfo, setUserInfo] = useState([{}]);
+    const [title, setPostTitle] = useState('');
+    const [content, setPostContent] = useState('');
+    let navigate = useNavigate();
 
     const handleLogout = () => {
         sessionStorage.removeItem('Auth Token');
         navigate('/login')
     }
-    let navigate = useNavigate();
 
+    const userInformation = async () => {
+        const response = await getUsers();
+        setUserInfo(response);
+    };
+    
 
-
-    const getUsers = async() => {
-        const auth = getAuth();
-        const currentUser = auth.currentUser;
-        if (currentUser !== null) {
-            const usersRef = query(collection(db, 'users'), where('id', '==', currentUser.id).get()
-        .then((doc) => {
-          const profile = {
-            id: currentUser.id,
-            fullName: currentUser.fullName,
-            ...doc.data(),
-          };
-
-        }))
-            // console.log(currentUser)
-            // const fullName = currentUser.fullName;
-            // const company = currentUser.company;
-            // const uid = currentUser.uid;
-            // setUser(fullName, company, uid);
-            const data = await getDocs(usersRef);
-        }
-    }
-
+    // // console.log("daasa", userInfo[0].id);
 
     useEffect(() => {
         let authToken = sessionStorage.getItem('Auth Token')
@@ -48,12 +37,28 @@ export default function Home() {
         if (authToken) {
             navigate('/home')
         }
-        getUsers();
+        userInformation();
 
         if (!authToken) {
             navigate('/register')
         }
     }, [])
+    const publishPost = async(data) => {
+        const user = auth.currentUser;
+        const uid = user.uid;
+        try {
+          const docRef = await addDoc(collection(db, "posts"), {
+            ...data,
+            authorId: uid,
+            title: title,
+            content: content
+          });
+          navigate('/home');
+          console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
+      }
     return (
         <>
             <Container maxWidth="lg" centered style={{
@@ -64,13 +69,18 @@ export default function Home() {
                 <Grid container spacing={2}>
                     <Grid item xs={6} md={4}>
 
-                        <Typography value="h4">Get accountName from users</Typography>
-                        <div className="title">{profile.fullName}</div>
+                        <Typography value="h4">Welcome:{userInfo[0].fullName} </Typography>
+                        <Typography>Company: {userInfo[0].company} </Typography>
                         
-                        <DepartmentOptions/>
+                        {/* <DepartmentOptions/> */}
                     </Grid>
                     <Grid item xs={6} md={8}>
                         Home Page
+                        <CreatePost 
+                            setPostTitle={setPostTitle}
+                            setPostContent={setPostContent}
+                            handleAction={() => publishPost()}
+                        />
                     </Grid>
                 </Grid>
             </Container>

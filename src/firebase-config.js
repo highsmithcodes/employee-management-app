@@ -1,3 +1,5 @@
+import { getAuth} from 'firebase/auth'
+import { collection, addDoc, getDocs, doc, setDoc, where, query, onSnapshot } from "firebase/firestore"; 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -27,8 +29,28 @@ const firebaseConfig = {
   appId: "1:895744664326:web:fb53528ed5dbf0160a3487"
 
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 export const db = getFirestore(app);
+const auth = getAuth();
+
+
+async function getUsers() {
+  if(auth.currentUser){
+    const uid = auth.currentUser.uid;
+    const q = query(collection(db, "users"), where("id", "==", uid));
+    const querrySnapshot = await getDocs(q);
+    let data = [];
+    querrySnapshot.forEach((doc) => {
+      data = [...data, doc.data()];
+      // console.log("User ki auth ka data ----> ", data);
+    });
+    return data;
+  } else{
+    console.log("problem with refresh")
+  };
+}
+
+
+export {getUsers};
