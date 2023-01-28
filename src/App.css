@@ -9,7 +9,9 @@
 .blue{
   color:#282c34;
 }
-
+.test {
+  background-color: red;
+}
 .menu{
   display: flex;
   flex-direction: row;
