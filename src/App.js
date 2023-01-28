@@ -8,19 +8,14 @@ import {
   Route,
   useNavigate
 } from "react-router-dom";
-import { app } from './firebase-config';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import DepartmentBody from './Components/DepartmentBody';
-import { collection, addDoc, getDocs, doc, setDoc, where, query, onSnapshot } from "firebase/firestore"; 
+import { collection, addDoc} from "firebase/firestore"; 
 import { db } from "./firebase-config";
-import { useParams } from "react-router-dom";
 import CreatePost from './Components/Common/CreatePost';
-import PostList from './Components/PostList';
 import Nav from './Components/Common/Nav';
 import NewSignup from './Pages/NewSignup';
-import FormRegister from './Components/Common/FormRegister';
 
 
 function App() {

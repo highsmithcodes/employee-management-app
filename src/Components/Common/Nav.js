@@ -13,7 +13,7 @@ export default function Nav() {
     return (
         <div className="menu">
             <div className="logo">
-                Logo
+                Kept
             </div>
             <ul>
                 {authToken ? (
