@@ -142,6 +142,13 @@ function App() {
             } 
           />
 
+          <Route 
+            path="/dashboard" 
+            element={
+              <CreatePost />
+            } 
+          />
+
 
         </Routes>
       </>

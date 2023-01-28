@@ -29,7 +29,7 @@ export default function Home() {
     };
     
 
-    // // console.log("daasa", userInfo[0].id);
+    console.log("daasa", userInfo[0].id);
 
     useEffect(() => {
         let authToken = sessionStorage.getItem('Auth Token')

@@ -19,7 +19,6 @@ export default function Nav() {
                 {authToken ? (
                     <>
                         <Link to="/dashboard">Dashboard</Link>
-                        <Link to="/profile">Profile</Link>
                         <button onClick={handleLogout}>Logout</button>
                     </>
                 ) : (

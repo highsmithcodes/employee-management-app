@@ -4,14 +4,26 @@ import { collection, addDoc, getDocs, doc, setDoc, where, query, onSnapshot } fr
 import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
-import {firebaseConfig}  from './firebaseEnv'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  // apiKey: process.env.REACT_APP_apiKey,
+  // authDomain: process.env.REACT_APP_authDomain,
+  // projectId: process.env.REACT_APP_projectId,
+  // storageBucket: process.env.REACT_APP_storageBucket,
+  // messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  // appId: process.env.REACT_APP_appId 
 
-// CONFIG IS A SEPERATE FILE
+  apiKey: "AIzaSyCR9VXkthCRDPYwVyVWXnd84rKYQgtmOzE",
+  authDomain: "kept-4a470.firebaseapp.com",
+  projectId: "kept-4a470",
+  storageBucket: "kept-4a470.appspot.com",
+  messagingSenderId: "700476479924",
+  appId: "1:700476479924:web:d92a36e97139201870bae1"
+};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
