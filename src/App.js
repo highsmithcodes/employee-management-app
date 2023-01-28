@@ -87,35 +87,8 @@ function App() {
       }
   }
 
-  // const departmentsRef = collection(db, "departments");
-  // const getDepartments = async () => {
-  //     const data = await getDocs(departmentsRef)
-  //     try {
-  //         setDepartmentList(
-  //             data.docs.map((doc) => ({...doc.data(), id: doc.id}))
-  //         );
-  //     } catch(err){
-  //         console.log(err)
-  //     }
-  // }
-
-  // const postsRef = collection(db, "posts");
-  // const getPosts = async () => {
-  //     const data = await getDocs(postsRef)
-  //     try {
-  //         setPostsList(
-  //             data.docs.map((doc) => ({...doc.data(), id: doc.id}))
-  //         );
-  //     } catch(err){
-  //         console.log(err)
-  //     }
-  // }
-
-
-
   useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token')
-    // getDepartments();
   }, [])
 
   return (
@@ -161,16 +134,6 @@ function App() {
 
           <Route path='/home' element={ <Home />}/>
           
-          {/* {departmentList?.map((post) => (
-              // <Post post={post}/>
-              <Route path={`/departments/${post.id}`} element={<DepartmentBody post={post}  />} />
-          ))}
-
-          {postsList?.map((post) => (
-              // <Post post={post}/>
-              <Route path={`/post/${post.id}`} element={<PostList post={post}  />} />
-          ))} */}
-
 
           <Route 
             path="/create-post" 
