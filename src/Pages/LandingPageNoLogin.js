@@ -7,6 +7,8 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { spacing } from '@mui/system'; 
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom"
+
 
 export default function LandingPageNoLogin() {
 
@@ -42,10 +44,10 @@ export default function LandingPageNoLogin() {
                             }}>
                                 <Typography variant="h5">Individual</Typography>
                                 <p>$0 seat/month</p>
-                                <Button href="/register" style={{
+                                <Link to="/register" style={{
                                     backgroundColor: "#fff",
                                     textAlign: 'center'
-                                }}>Choose Option</Button>
+                                }}>Choose Option</Link>
                             </Item>
                         </Grid>
                         <Grid item xs>
@@ -54,10 +56,10 @@ export default function LandingPageNoLogin() {
                             }}>
                                 <Typography variant="h5">Basic</Typography>
                                 <p>$0 seat/month</p>
-                                <Button href="/register" style={{
+                                <Link to="/register" style={{
                                     backgroundColor: "#fff",
                                     textAlign: 'center'
-                                }}>Choose Option</Button>
+                                }}>Choose Option</Link>
                             </Item>
                         </Grid>
                         <Grid item xs>
@@ -66,10 +68,10 @@ export default function LandingPageNoLogin() {
                             }}>
                                 <Typography variant="h5">Standard</Typography>
                                 <p>$0 seat/month</p>
-                                <Button href="/register" style={{
+                                <Link to="/register" style={{
                                     backgroundColor: "#fff",
                                     textAlign: 'center'
-                                }}>Choose Option</Button>
+                                }}>Choose Option</Link>
                             </Item>
                         </Grid>
                     </Grid>
