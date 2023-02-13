@@ -16,6 +16,7 @@ import { db } from "./firebase-config";
 import CreatePost from './Components/Common/CreatePost';
 import Nav from './Components/Common/Nav';
 import NewSignup from './Pages/NewSignup';
+// add in context
 
 
 function App() {
