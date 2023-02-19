@@ -35,7 +35,7 @@ export default function LandingPageNoLogin() {
                 paddingBottom: '120px',
                 textAlign: 'center'
             }}>
-                <Typography variant="h2">Pricing</Typography>
+                {/* <Typography variant="h2">Pricing</Typography>
                 <div className="pricing-options">
                     <Grid container spacing={5} marginTop={5}>
                         <Grid item xs>
@@ -75,7 +75,7 @@ export default function LandingPageNoLogin() {
                             </Item>
                         </Grid>
                     </Grid>
-                </div>
+                </div> */}
             </Container>
 
         </>
