@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid';
 
 
 
-export default function BasicTextFields({ title, setPassword, setEmail, handleAction }) {
+export default function BasicTextFields({ title, setPassword, setEmail, handleAction, message }) {
     return (
         <Container maxWidth="lg" centered style={{
             paddingTop: "120px",
@@ -16,7 +16,7 @@ export default function BasicTextFields({ title, setPassword, setEmail, handleAc
           }}>
                 <Typography variant="h4" style={{
                         paddingBottom: "40px",
-                    }}>{title} Form</Typography>
+                    }}>{title}</Typography>
                 <Box
                     component="form"
                     sx={{
@@ -41,12 +41,16 @@ export default function BasicTextFields({ title, setPassword, setEmail, handleAc
                     <TextField
                         id="password"
                         label="Enter the Password"
+                        type="password"
+                        required
+                        fullWidth
                         variant="outlined"
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </Box>
 
                 <Button title={title} handleAction={handleAction}/>
+                <div className="small-title">{message}</div>
         </Container>
     );
 }

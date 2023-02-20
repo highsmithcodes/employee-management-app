@@ -13,7 +13,7 @@ import { Link } from "react-router-dom"
 export default function LandingPageNoLogin() {
 
     const Item = styled(Paper)(({ theme }) => ({
-        backgroundColor: theme.palette.primary.dark,
+        backgroundColor: '#fff',
         ...theme.typography.body2,
         padding: theme.spacing(1),
         textAlign: 'center',
@@ -24,7 +24,9 @@ export default function LandingPageNoLogin() {
         <>
             <div className="hero">
                 <Container maxWidth="lg" flex-end>
-                    <Typography variant="h1">Kept</Typography>
+                    <Typography variant="h1"style={{
+                paddingBottom: '20px'
+            }}>Kept</Typography>
                     <div className="small-title">Keep your team organized with a knowledge base</div>
                 </Container>
             </div>
@@ -35,7 +37,7 @@ export default function LandingPageNoLogin() {
                 paddingBottom: '120px',
                 textAlign: 'center'
             }}>
-                {/* <Typography variant="h2">Pricing</Typography>
+                <Typography variant="h2">Pricing</Typography>
                 <div className="pricing-options">
                     <Grid container spacing={5} marginTop={5}>
                         <Grid item xs>
@@ -46,7 +48,14 @@ export default function LandingPageNoLogin() {
                                 <p>$0 seat/month</p>
                                 <Link to="/register" style={{
                                     backgroundColor: "#fff",
-                                    textAlign: 'center'
+                                    textAlign: 'center',
+                                    padding: '10px 20px',
+                                    marginTop: '20px',
+                                    textDecoration: 'none',
+                                    color: '#fff',
+                                    backgroundColor: '#282c34',
+                                    fontWeight: 'bold',
+                                    display: 'inline-block'
                                 }}>Choose Option</Link>
                             </Item>
                         </Grid>
@@ -58,7 +67,14 @@ export default function LandingPageNoLogin() {
                                 <p>$0 seat/month</p>
                                 <Link to="/register" style={{
                                     backgroundColor: "#fff",
-                                    textAlign: 'center'
+                                    textAlign: 'center',
+                                    padding: '10px 20px',
+                                    marginTop: '20px',
+                                    textDecoration: 'none',
+                                    color: '#fff',
+                                    backgroundColor: '#282c34',
+                                    fontWeight: 'bold',
+                                    display: 'inline-block'
                                 }}>Choose Option</Link>
                             </Item>
                         </Grid>
@@ -70,12 +86,19 @@ export default function LandingPageNoLogin() {
                                 <p>$0 seat/month</p>
                                 <Link to="/register" style={{
                                     backgroundColor: "#fff",
-                                    textAlign: 'center'
+                                    textAlign: 'center',
+                                    padding: '10px 20px',
+                                    marginTop: '20px',
+                                    textDecoration: 'none',
+                                    color: '#fff',
+                                    backgroundColor: '#282c34',
+                                    fontWeight: 'bold',
+                                    display: 'inline-block'
                                 }}>Choose Option</Link>
                             </Item>
                         </Grid>
                     </Grid>
-                </div> */}
+                </div>
             </Container>
 
         </>

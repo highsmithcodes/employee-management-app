@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import Form from './Components/Common/Form';
 import Home from './Pages/Home';
+import SinglePostPage from './Components/SinglePostPage';
 import LandingPageNoLogin from './Pages/LandingPageNoLogin';
 import {
   Routes,
@@ -16,6 +17,7 @@ import { db } from "./firebase-config";
 import CreatePost from './Components/Common/CreatePost';
 import Nav from './Components/Common/Nav';
 import NewSignup from './Pages/NewSignup';
+import PostList from './Components/PostList';
 // add in context
 
 
@@ -81,8 +83,8 @@ function App() {
         });
         navigate('/home');
        
-        console.log("Document written with ID: ", docRef.id);
-        console.log("Document written with ID: ", companyRef.id);
+        // console.log("Document written with ID: ", docRef.id);
+        // console.log("Document written with ID: ", companyRef.id);
       } catch (e) {
         console.error("Error adding document: ", e);
       }
@@ -116,6 +118,7 @@ function App() {
             element={
               <Form
                 title="Register"
+                message="Step 1 of 2"
                 setEmail={setEmail}
                 setPassword={setPassword}
                 handleAction={() => handleAction(2)}
@@ -146,10 +149,12 @@ function App() {
           <Route 
             path="/dashboard" 
             element={
-              <CreatePost />
+              <Home />
             } 
           />
 
+          <Route exact path="/posts" component={<PostList />} />
+          <Route path="/posts/:id" element={<SinglePostPage/>} />
 
         </Routes>
       </>

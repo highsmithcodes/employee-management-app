@@ -13,7 +13,7 @@ export default function PostList() {
     const catRef = query(collection(db, 'categories'))
 
     const getCategoryId = async () => {
-        const data = await getDocs(catRef) 
+        const data = await getDocs(catRef)
         try {
             setCategoryId(
                 data.docs.map((doc) => ({id: doc.id}))
@@ -24,10 +24,10 @@ export default function PostList() {
     }
     
 
-    const postsRef = query(collection(db, 'posts'), where('category', '==', "wqmfzG9gcOpb55n1LIdO"))
-
+    // const postsRef = query(collection(db, 'posts'), where('category', '==', "wqmfzG9gcOpb55n1LIdO"))
+    const postsRef = query(collection(db, 'posts'))
     const getPosts = async () => {
-        console.log(categoryId)
+        // console.log(categoryId)
         const data = await getDocs(postsRef)
         try {
             setPostsList(
@@ -48,9 +48,22 @@ export default function PostList() {
             {postsList?.map((post) => (
                 <div className="post">
                     {/* <Link path={`/post/${post.id}`}> */}
-                        <div className="title">Title:{post.title}</div>
-                        <div className="details">Details:{post.details}</div>
-                        <div className="categories">Category:{post.category}</div>
+                        <div className="title">{post.title}</div>
+                        <div className="details">{post.content}</div>
+                        <div className="post-btm-details" style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            marginTop: '40px',
+                            alignItems: 'center'
+                        }}>
+                            {/* <div className="categories">Category:{post.category}</div> */}
+                            <div className="more">
+                            <Link to={`/posts/${post.id}`} className="button muted-button">
+                                Read More
+                            </Link>
+                            </div>
+                        </div>
                     {/* </Link> */}
                 </div>
             ))}

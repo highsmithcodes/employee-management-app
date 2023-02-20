@@ -47,6 +47,7 @@ export default function NewSignup({ setFullName, setCompanyName, handleAction })
                 </Box>
 
                 <Button title="Continue" handleAction={handleAction}/>
+                <div className="small-title">Step 2 of 2</div>
         </Container>
     )
 }
