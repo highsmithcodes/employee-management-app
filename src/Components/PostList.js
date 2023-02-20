@@ -4,11 +4,14 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import CreatePost from "./Common/CreatePost";
 import { Link, Route } from "react-router-dom";
+import { getUsers } from "../firebase-config";
 
 
 export default function PostList() {
     const [postsList, setPostsList] = useState([]);
     const [categoryId, setCategoryId] = useState([]);
+    const [ userInfo, setUserInfo] = useState([{}]);
+
 
     const catRef = query(collection(db, 'categories'))
 
@@ -24,10 +27,15 @@ export default function PostList() {
     }
     
 
-    // const postsRef = query(collection(db, 'posts'), where('category', '==', "wqmfzG9gcOpb55n1LIdO"))
+    const userInformation = async () => {
+        const response = await getUsers();
+        setUserInfo(response);
+    };
+   
+
     const postsRef = query(collection(db, 'posts'))
     const getPosts = async () => {
-        // console.log(categoryId)
+        console.log(userInfo[0].id)
         const data = await getDocs(postsRef)
         try {
             setPostsList(
@@ -36,15 +44,21 @@ export default function PostList() {
         } catch(err){
             console.log(err)
         }
+        if(userInfo[0].id == postsRef.id){
+            // setblog(doc.data());
+            console.log('working')
+        } 
     }
 
    
     useEffect(() => {
+        userInformation();
         getCategoryId([]);
         getPosts();
     }, [])
     return (
         <>
+         {/* {userInfo[0].company}  */}
             {postsList?.map((post) => (
                 <div className="post">
                     {/* <Link path={`/post/${post.id}`}> */}

@@ -2,6 +2,7 @@ import { getAuth} from 'firebase/auth'
 import { collection, addDoc, getDocs, doc, setDoc, where, query, onSnapshot } from "firebase/firestore"; 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import firebase from 'firebase/compat/app';
 // import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -40,12 +41,12 @@ async function getUsers() {
     let data = [];
     querrySnapshot.forEach((doc) => {
       data = [...data, doc.data()];
-      // console.log("User ki auth ka data ----> ", data);
     });
     return data;
   } else{
     console.log("problem with refresh")
   };
+
 }
 
 

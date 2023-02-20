@@ -14,6 +14,17 @@ export default function CreatePost({ setPostTitle, setPostContent, handleAction 
             paddingBottom: '120px',
             textAlign: 'center'
           }}>
+            <Grid container spacing={1} alignItems="center" justifyContent="center">
+
+                <Grid item xs={6} md={12} style={{
+                    boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+                    backgroundColor: '#fff',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: '40px',
+                    textAlign: 'center'
+                }}>
                 <Typography variant="h4" style={{
                         paddingBottom: "40px",
                     }}>New Post</Typography>
@@ -47,6 +58,8 @@ export default function CreatePost({ setPostTitle, setPostContent, handleAction 
                 </Box>
 
                 <Button title="Add Post" handleAction={handleAction}/>
+                </Grid>
+                </Grid>
         </Container>
     );
 }

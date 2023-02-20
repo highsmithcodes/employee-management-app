@@ -28,6 +28,8 @@ function App() {
   const [companyName, setCompanyName] = useState('');
   const [postsList, setPostsList] = useState([]);
   const [ postInfo, setPostInfo] = useState([{}]);
+  const [title, setPostTitle] = useState('');
+  const [content, setPostContent] = useState('');
 
   let navigate = useNavigate();
   const auth = getAuth();
@@ -90,7 +92,25 @@ function App() {
       }
   }
 
+  const publishPost = async(data) => {
+      const user = auth.currentUser;
+      const uid = user.uid;
+      try {
+        const docRef = await addDoc(collection(db, "posts"), {
+          ...data,
+          authorId: uid,
+          title: title,
+          content: content
+        });
+        navigate('/home');
+        console.log("Document written with ID: ", docRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+  }
+
   useEffect(() => {
+    publishPost();
     let authToken = sessionStorage.getItem('Auth Token')
   }, [])
 
@@ -142,7 +162,11 @@ function App() {
           <Route 
             path="/create-post" 
             element={
-              <CreatePost />
+              <CreatePost 
+                setPostTitle={setPostTitle}
+                setPostContent={setPostContent}
+                handleAction={() => publishPost()}
+              />
             } 
           />
 
