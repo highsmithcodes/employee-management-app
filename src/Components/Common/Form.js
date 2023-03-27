@@ -14,6 +14,7 @@ export default function BasicTextFields({ title, setPassword, setEmail, handleAc
             paddingBottom: '120px',
             textAlign: 'center'
           }}>
+            <div className='form-bg'>
                 <Typography variant="h4" style={{
                         paddingBottom: "40px",
                     }}>{title}</Typography>
@@ -51,6 +52,7 @@ export default function BasicTextFields({ title, setPassword, setEmail, handleAc
 
                 <Button title={title} handleAction={handleAction}/>
                 <div className="small-title">{message}</div>
+                </div>
         </Container>
     );
 }
