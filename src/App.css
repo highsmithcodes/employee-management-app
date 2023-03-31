@@ -1,5 +1,4 @@
 .App {
-  background-image: linear-gradient(180deg, rgb(251, 171, 126) 0%, rgb(247, 206, 104) 100%);
   min-height: 100vh;
 }
 .h1{
@@ -21,7 +20,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color:#282c34;
+  background-color:#0c0429;
   padding: 10px;
   color:#fff;
 }
@@ -32,7 +31,7 @@
   font-weight: 600;
 }
 .menu button{
-  background:transparent;
+  background:transparent !important;
   border: none;
   color:#fff;
   font-size: 16px;
@@ -90,7 +89,7 @@
   padding:15px 20px;
   color: #fff;
   text-decoration: none;
-  margin:20px 0 !important;
+  /* margin:20px 0 !important; */
   display: inline-block;
   font-weight: 600 !important;
   text-transform: uppercase;
@@ -153,8 +152,58 @@
   background: #fff;
 }
 .form-bg {
-  background-color: #fff;
+  background: linear-gradient(180deg, rgba(12,4,41,1) 0%, rgba(40,31,77,1) 100%);
   padding: 60px;
   width: 60%;
   margin: 0 auto;
+  border-radius: 25px;
 }
+.form-bg button {
+  background: #fff !important;
+  color: #0c0429;
+  margin-top: 20px;
+}
+.lt-purple{color:#786f99;}
+.white{color:#fff;}
+input {
+  background: #fff !important;    border-radius: 5px;
+}
+.Mui-focused{color: grey !important;}
+.button{padding:15px 25px;border-radius: 25px;font-weight: 600;text-decoration: none;}
+.button.white{background-color: #fff !important;color:#0c0429;}
+.button.purple{background-color: #5459d6 !important;color:#fff;}
+.button.transparent{background-color: transparent !important;color:#fff;border:1px solid #fff;}
+
+.purple-bg{background-color: #0c0429;}
+.purple-bg-light{background-color: #5459d6;}
+.purple-bg-gradient{background: linear-gradient(100deg, rgba(31,23,66,1) 0%, rgba(10,4,40,1) 100%);    padding: 50px 0;border-radius: 25px;}
+
+h1{font-size: 5em;margin:20px 0;}
+h2{font-size: 4em;margin:20px 0;}
+
+.nav{background-color:#0c0429;}
+
+.nav{display: flex;justify-content: space-between;align-items: center;flex-direction: row;}
+.nav ul{padding-left: 0;}
+.nav ul a{color:#fff;text-decoration: none;padding:0 20px; text-align: center;}
+.nav .nav-button{margin-right: 20px;}
+
+.hero{height:100vh;}
+.hero-inner{background-color: red;height:90vh;border-bottom-left-radius: 25px;border-bottom-right-radius: 25px;background: linear-gradient(180deg, rgba(12,4,41,1) 0%, rgba(40,31,77,1) 100%);}
+
+.hero-content{width:960px;margin: 0 auto;display: flex;flex-direction: row;align-items: center;height:100%;justify-content: center;}
+.hero-content .col-50{width:50%;text-align: left;}
+.hero-buttons{margin-top:50px;}
+.hero-buttons .button{margin-right:20px;}
+
+ul.steps{display: flex;justify-content: center;align-items: center;flex-direction: row;padding-left: 0;}
+.step-icon{background: linear-gradient(132deg, rgba(31,23,66,1) 0%, rgba(10,4,40,1) 100%);height:100px;width: 100px;border-radius: 25px;margin: 0 auto;}
+.step-inner{background: linear-gradient(132deg, rgba(31,23,66,1) 0%, rgba(10,4,40,1) 100%);height:90%;width: 90%;border-radius: 25px;margin: 0 auto;padding:20px;text-align: left;}
+.step-icon img{margin: 0 auto;}
+
+.home-services-inner{padding:50px 0;border-radius: 25px;}
+.btm-footer{border-top:1px solid #786f99;}
+
+
+details{border-top: 1px solid #fff;}
+details:first-child{border-top:0;}

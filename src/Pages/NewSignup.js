@@ -14,9 +14,8 @@ export default function NewSignup({ setFullName, setCompanyName, handleAction })
             paddingBottom: '120px',
             textAlign: 'center'
           }}>
-                <Typography variant="h4" style={{
-                    paddingBottom: "40px",
-                }}>Set Up Your Account</Typography>
+            <div className='form-bg'>
+                <div className="text-3xl font-bold text-white mb-4">Set Up Your Account</div>
                 <Box
                     component="form"
                     sx={{
@@ -47,7 +46,8 @@ export default function NewSignup({ setFullName, setCompanyName, handleAction })
                 </Box>
 
                 <Button title="Continue" handleAction={handleAction}/>
-                <div className="small-title">Step 2 of 2</div>
+                <div className="small-title mt-5 text-white">Step 2 of 2</div>
+                </div>
         </Container>
     )
 }

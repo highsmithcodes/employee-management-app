@@ -15,9 +15,7 @@ export default function BasicTextFields({ title, setPassword, setEmail, handleAc
             textAlign: 'center'
           }}>
             <div className='form-bg'>
-                <Typography variant="h4" style={{
-                        paddingBottom: "40px",
-                    }}>{title}</Typography>
+                <div className="text-3xl font-bold text-white mb-4">{title}</div>
                 <Box
                     component="form"
                     sx={{
@@ -50,8 +48,8 @@ export default function BasicTextFields({ title, setPassword, setEmail, handleAc
                     />
                 </Box>
 
-                <Button title={title} handleAction={handleAction}/>
-                <div className="small-title">{message}</div>
+                <Button title={title} handleAction={handleAction} />
+                <div className="small-title mt-5 text-white">{message}</div>
                 </div>
         </Container>
     );

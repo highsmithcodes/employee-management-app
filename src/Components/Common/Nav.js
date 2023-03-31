@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { useNavigate } from 'react-router-dom'
+import logo from "../../logo.png";
 
 export default function Nav() {
     let navigate = useNavigate();
@@ -13,7 +14,9 @@ export default function Nav() {
     return (
         <div className="menu">
             <div className="logo">
-                Kept
+                <Link to="/">
+                 <img src={logo} width="100px" />
+                </Link>
             </div>
             <ul>
                 {authToken ? (

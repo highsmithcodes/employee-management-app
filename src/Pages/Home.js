@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import DepartmentOptions from '../Components/DepartmentOptions';
-import { Container, Typography } from "@mui/material"
-import Grid from '@mui/material/Grid';
-import Divider from '@mui/material/Divider';
 import { getAuth } from 'firebase/auth';
 import { collection, addDoc, getDocs, doc, setDoc, where, query, onSnapshot } from "firebase/firestore"; 
 import { getUsers } from "../firebase-config";
 import PostList from '../Components/PostList';
 import CreatePost  from '../Components/Common/CreatePost';
 import { db } from "../firebase-config";
+import { Link } from "react-router-dom";
+import SidebarNav from '../Components/Common/SidebarNav';
 
 
 export default function Home() {
@@ -63,55 +61,26 @@ export default function Home() {
     //   }
     return (
         <>
-            <Container maxWidth="lg" centered style={{
-                paddingTop: "120px",
-                paddingBottom: '120px',
-                textAlign: 'center'
-            }}>
-                <Grid container spacing={2}>
-                    <Grid item xs={6} md={4} style={{
-                        boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
-                        backgroundColor: '#fff',
-                        flexDirection: 'column',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        padding: '40px',
-                        marginRight: '10px',
-                        textAlign: 'center'
-                    }}>
-                        
-                        <Typography variant="h4" style={{
-                            paddingBottom: '20px'
-                        }}>Welcome</Typography>
-                        <div className="small-title">{userInfo[0].fullName}</div>
-                        <Divider style={{
-                        margin: '40px 0'
-                    }}/>
-                        <Typography>Company: {userInfo[0].company} </Typography>
-                        
-                        {/* <DepartmentOptions/> */}
-                    </Grid>
-                    <Grid item xs={6} md={7} style={{
-                        boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
-                        backgroundColor: '#fff',
-                        flexDirection: 'column',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        padding: '40px',
-                        textAlign: 'center'
-                    }}>
-                        <Typography variant="h4" style={{
-                            paddingBottom: '20px'
-                        }}>Recent Posts</Typography>
+            <div className="container mx-auto py-5">
+                <div class="flex flex-wrap py-5 my-5">
+                    <div class="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto -mt-78 drop-shadow-md purple-bg py-5 my-5 rounded-lg	">
+                        <p className="text-3xl font-bold text-white text-center pb-4">{userInfo[0].fullName}</p>
+                        <p className="text-lg font-bold text-white text-center">Company: {userInfo[0].company} </p>
+                    {/* <DepartmentOptions/> */}
+                        <SidebarNav/>
+                    </div>
+                    <div class="w-full md:w-6/12 px-4 sm:mt-5 xs:mt-5">
+
+                        <div className="text-3xl font-bold text-black pb-5">Recent Posts</div>
                         {/* <CreatePost 
                             setPostTitle={setPostTitle}
                             setPostContent={setPostContent}
                             handleAction={() => publishPost()}
                         /> */}
                         <PostList />
-                    </Grid>
-                </Grid>
-            </Container>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
