@@ -32,7 +32,8 @@ export default function PostList() {
         setUserInfo(response);
     };
    
-
+    // Create conditional for company to pull posts
+    // const postsRef = query(collection(db, 'posts').where('authorId', '===', MFob942YKxYHColzd9qmMrLIAD32))
     const postsRef = query(collection(db, 'posts'))
     const getPosts = async () => {
         console.log(userInfo[0].id)
