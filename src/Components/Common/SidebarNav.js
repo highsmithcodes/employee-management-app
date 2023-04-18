@@ -9,7 +9,7 @@ export default function SidebarNav() {
         <ul className="flex flex-col mt-5">
             <Link to="/" className="text-white my-3 button transparent">Dashboard</Link>
             <Link to="/create-post/" className="text-white my-3 button transparent">Create a Post</Link>
-            <Link to="/login" className="text-white my-3 button transparent">Your Posts</Link>
+            <Link to="/your-posts" className="text-white my-3 button transparent">Your Posts</Link>
         </ul>
     )
 }

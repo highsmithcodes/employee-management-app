@@ -1,5 +1,5 @@
 import { collection, addDoc, getDocs, doc, where, query, onSnapshot } from "firebase/firestore"; 
-import { db } from "../firebase-config";
+import { db,querySnapshot } from "../firebase-config";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import CreatePost from "./Common/CreatePost";
@@ -11,7 +11,7 @@ export default function PostList() {
     const [postsList, setPostsList] = useState([]);
     const [categoryId, setCategoryId] = useState([]);
     const [ userInfo, setUserInfo] = useState([{}]);
-
+    const [company, setPostCompany] = useState('');
 
     const catRef = query(collection(db, 'categories'))
 
@@ -25,7 +25,7 @@ export default function PostList() {
             console.log(err)
         }
     }
-    
+    // 
 
     const userInformation = async () => {
         const response = await getUsers();
@@ -34,9 +34,31 @@ export default function PostList() {
    
     // Create conditional for company to pull posts
     // const postsRef = query(collection(db, 'posts').where('authorId', '===', MFob942YKxYHColzd9qmMrLIAD32))
-    const postsRef = query(collection(db, 'posts'))
+
+    // const userCompany = async () => {
+    //     const q = query(collection(db, "users"));
+
+    //     const querySnapshot = await getDocs(q);
+    //     querySnapshot.forEach((doc) => {
+    //     // doc.data() is never undefined for query doc snapshots
+    //         // const data = doc.data();
+    //         // const finalCompany = data.company;
+    //         // setPostCompany(finalCompany)
+    //         console.log(doc.data())
+    //     });
+    // };
+    const userCompany = async () => {
+        const response = await getUsers();
+        const companyName = response[0].company;
+        setPostCompany(companyName);
+        console.log('response', companyName)
+    };
+
+
+    const postsRef = query(collection(db, 'posts'), where("company", "==", company))
     const getPosts = async () => {
-        console.log(userInfo[0].id)
+        // console.log(userInfo[0].id)
+        
         const data = await getDocs(postsRef)
         try {
             setPostsList(
@@ -53,6 +75,7 @@ export default function PostList() {
 
    
     useEffect(() => {
+        userCompany();
         userInformation();
         getCategoryId([]);
         getPosts();

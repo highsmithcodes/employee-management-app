@@ -12,12 +12,13 @@ import {
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { collection, addDoc} from "firebase/firestore"; 
+import { collection, addDoc, query, where, getDocs} from "firebase/firestore"; 
 import { db } from "./firebase-config";
 import CreatePost from './Components/Common/CreatePost';
 import Nav from './Components/Common/Nav';
 import NewSignup from './Pages/NewSignup';
 import PostList from './Components/PostList';
+import UserPostList from './Components/UserPostList';
 // add in context
 
 
@@ -30,6 +31,7 @@ function App() {
   const [ postInfo, setPostInfo] = useState([{}]);
   const [title, setPostTitle] = useState('');
   const [content, setPostContent] = useState('');
+  const [company, setPostCompany] = useState('');
 
   let navigate = useNavigate();
   const auth = getAuth();
@@ -67,6 +69,8 @@ function App() {
         })
     }
   }
+// 
+
 
   const publishUser = async(data) => {
       const user = auth.currentUser;
@@ -92,6 +96,21 @@ function App() {
       }
   }
 
+  const findUser = async(data) => {
+    // console.log('User Company:', userCompany)
+    const user = auth.currentUser;
+    const uid = user.uid;
+    const q = query(collection(db, "users"), where("id", "==", uid));
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      // console.log(doc.id, " => ", doc.data());
+      const data = doc.data();
+      const finalCompany = data.company;
+      setPostCompany(finalCompany)
+    });
+  }
+
   const publishPost = async(data) => {
       const user = auth.currentUser;
       const uid = user.uid;
@@ -100,6 +119,7 @@ function App() {
           ...data,
           authorId: uid,
           title: title,
+          company: company,
           content: content
         });
         navigate('/home');
@@ -110,6 +130,7 @@ function App() {
   }
 
   useEffect(() => {
+    findUser();
     publishPost();
     let authToken = sessionStorage.getItem('Auth Token')
   }, [])
@@ -165,6 +186,7 @@ function App() {
               <CreatePost 
                 setPostTitle={setPostTitle}
                 setPostContent={setPostContent}
+                setPostCompany={setPostCompany}
                 handleAction={() => publishPost()}
               />
             } 
@@ -178,6 +200,7 @@ function App() {
           />
 
           <Route exact path="/posts" component={<PostList />} />
+          <Route path="/your-posts" element={<UserPostList />} />
           <Route path="/posts/:id" element={<SinglePostPage/>} />
 
         </Routes>
