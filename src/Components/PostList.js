@@ -84,6 +84,7 @@ export default function PostList() {
         <>
          {/* {userInfo[0].company}  */}
             {postsList?.map((post) => (
+               
                 <div className="post drop-shadow-md">
                     {/* <Link path={`/post/${post.id}`}> */}
                         <div className="title">{post.title}</div>
@@ -104,6 +105,7 @@ export default function PostList() {
                         </div>
                     {/* </Link> */}
                 </div>
+                
             ))}
         </>
     )

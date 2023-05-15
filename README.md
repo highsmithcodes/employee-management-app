@@ -7,6 +7,8 @@ Kept is a web tool designed to help organize your team departments. Create a dep
 - React
 - Firestore
 - Netflify
+- Docker
+- TailwindCSS
 
 ## Deployment
 
