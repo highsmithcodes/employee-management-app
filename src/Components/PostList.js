@@ -59,7 +59,7 @@ export default function PostList() {
     const newpostsRef = collection(db, "posts");
 
     // Create a query against the collection.
-    const newpostsRefQuery = query(newpostsRef, where("company", "==", company));
+    const newpostsRefQuery = query(newpostsRef, where("company", "===", company));
 
     const getPosts = async () => {
         // console.log(userInfo[0].id)
