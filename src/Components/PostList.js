@@ -56,10 +56,15 @@ export default function PostList() {
 
 
     const postsRef = query(collection(db, 'posts'), where("company", "==", company))
+    const newpostsRef = collection(db, "posts");
+
+    // Create a query against the collection.
+    const newpostsRefQuery = query(newpostsRef, where("company", "==", company));
+
     const getPosts = async () => {
         // console.log(userInfo[0].id)
-        
-        const data = await getDocs(postsRef)
+
+        const data = await getDocs(newpostsRefQuery)
         try {
             setPostsList(
                 data.docs.map((doc) => ({...doc.data(), id: doc.id}))
@@ -67,7 +72,7 @@ export default function PostList() {
         } catch(err){
             console.log(err)
         }
-        if(userInfo[0].id == postsRef.id){
+        if(userInfo[0].id == newpostsRefQuery.id){
             // setblog(doc.data());
             console.log('working')
         } 
