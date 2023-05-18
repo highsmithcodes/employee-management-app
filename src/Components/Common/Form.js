@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import { FormControl, FormLabel } from '@mui/material';
 import Button from './Button';
 import { Container, Typography } from "@mui/material"
 import Grid from '@mui/material/Grid';
@@ -14,7 +15,7 @@ export default function BasicTextFields({ title, setPassword, setEmail, handleAc
             paddingBottom: '120px',
             textAlign: 'center'
           }}>
-            <div className='form-bg'>
+            <FormControl className='form-bg'>
                 <div className="text-3xl font-bold text-white mb-4">{title}</div>
                 <Box
                     component="form"
@@ -36,6 +37,7 @@ export default function BasicTextFields({ title, setPassword, setEmail, handleAc
                         label="Enter the Email"
                         variant="outlined"
                         onChange={(e) => setEmail(e.target.value)}
+                        inputProps={{ "data-testid": "account-enter-email" }}
                     />
                     <TextField
                         id="password"
@@ -45,12 +47,13 @@ export default function BasicTextFields({ title, setPassword, setEmail, handleAc
                         fullWidth
                         variant="outlined"
                         onChange={(e) => setPassword(e.target.value)}
+                        inputProps={{ "data-testid": "account-enter-password" }}
                     />
                 </Box>
 
                 <Button title={title} handleAction={handleAction} />
                 <div className="small-title mt-5 text-white">{message}</div>
-                </div>
+            </FormControl>
         </Container>
     );
 }
