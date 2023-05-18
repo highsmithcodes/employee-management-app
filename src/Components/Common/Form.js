@@ -15,7 +15,7 @@ export default function BasicTextFields({ title, setPassword, setEmail, handleAc
             paddingBottom: '120px',
             textAlign: 'center'
           }}>
-            <FormControl className='form-bg'>
+            <FormControl className='form-bg' sx={{ p: 4 }}>
                 <div className="text-3xl font-bold text-white mb-4">{title}</div>
                 <Box
                     component="form"
