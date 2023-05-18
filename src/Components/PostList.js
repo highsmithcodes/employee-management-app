@@ -65,9 +65,10 @@ export default function PostList() {
     const getPosts = async () => {
         console.log("Get Posts Function", company)
 
-        const data = await getDocs(newpostsRefQuery)
+        // const data = await getDocs(newpostsRefQuery)
+ 
+        const querySnapshot = await getDocs(newpostsRefQuery);
         querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
             setPostsList(
                 data.docs.map((doc) => ({...doc.data(), id: doc.id}))
             ); 
