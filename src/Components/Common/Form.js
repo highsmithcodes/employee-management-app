@@ -51,7 +51,7 @@ export default function BasicTextFields({ title, setPassword, setEmail, handleAc
                     />
                 </Box>
 
-                <Button title={title} handleAction={handleAction} />
+                <Button title={title} handleAction={handleAction} sx={{ mx: 'auto' }} />
                 <div className="small-title mt-5 text-white">{message}</div>
             </FormControl>
         </Container>
