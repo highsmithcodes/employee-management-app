@@ -63,28 +63,21 @@ export default function PostList() {
 
 
     const getPosts = async () => {
-        console.log("Get Posts Function", company)
+        // console.log(userInfo[0].id)
 
-        // const data = await getDocs(newpostsRefQuery)
- 
-        const querySnapshot = await getDocs(newpostsRefQuery);
-        querySnapshot.forEach((doc) => {
+        const data = await getDocs(newpostsRefQuery)
+        
+        try {
             setPostsList(
                 data.docs.map((doc) => ({...doc.data(), id: doc.id}))
             ); 
-        });
-
-        // try {
-        //     setPostsList(
-        //         data.docs.map((doc) => ({...doc.data(), id: doc.id}))
-        //     ); 
-        // } catch(err){
-        //     console.log(err)
-        // }
-        // if(userInfo[0].id == newpostsRefQuery.id){
-        //     // setblog(doc.data());
-        //     console.log('working')
-        // } 
+        } catch(err){
+            console.log(err)
+        }
+        if(userInfo[0].id == newpostsRefQuery.id){
+            // setblog(doc.data());
+            console.log('working')
+        } 
     }
 
    
