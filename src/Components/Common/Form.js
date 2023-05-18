@@ -50,8 +50,9 @@ export default function BasicTextFields({ title, setPassword, setEmail, handleAc
                         inputProps={{ "data-testid": "account-enter-password" }}
                     />
                 </Box>
-
-                <Button title={title} handleAction={handleAction} sx={{ width: 300,  mx: 'auto' }} />
+                <div sx={{ width: 300,  mx: 'auto' }}>
+                    <Button title={title} handleAction={handleAction} />
+                </div>
                 <div className="small-title mt-5 text-white">{message}</div>
             </FormControl>
         </Container>
