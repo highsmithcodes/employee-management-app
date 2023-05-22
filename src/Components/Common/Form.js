@@ -10,6 +10,7 @@ import Grid from '@mui/material/Grid';
 
 export default function BasicTextFields({ title, setPassword, setEmail, handleAction, message }) {
     return (
+        // Add more form conditionals
         <Container maxWidth="lg" centered style={{
             paddingTop: "120px",
             paddingBottom: '120px',
