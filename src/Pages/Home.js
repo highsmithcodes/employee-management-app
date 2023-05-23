@@ -61,6 +61,7 @@ export default function Home() {
     //   }
     return (
         <>
+      
             <div className="container mx-auto py-5">
                 <div class="flex flex-wrap py-5 my-5">
                     <div class="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto -mt-78 drop-shadow-md purple-bg py-5 my-5 rounded-lg	">
