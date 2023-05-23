@@ -55,6 +55,7 @@ function App() {
           }
         })
     }
+    // update conditionals for posts
 
     if (id === 2) {
       createUserWithEmailAndPassword(authentication, email, password)
