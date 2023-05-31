@@ -36,12 +36,13 @@ export default function Nav() {
                     <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                 {authToken ? (
                     <>
+                        <Link to="/" className="block py-2 pr-4 pl-3 text-black rounded lg:bg-transparent lg:p-0 dark:text-white">Home</Link>
                     </>
                 ) : (
                     <>
-                        <Link to="/" className="block py-2 pr-4 pl-3 text-white rounded lg:bg-transparent lg:p-0 dark:text-white">Home</Link>
-                        <Link to="/login" className="block py-2 pr-4 pl-3 text-white rounded lg:bg-transparent lg:p-0 dark:text-white">Login</Link>
-                        <Link to="/register" className="block py-2 pr-4 pl-3 text-white rounded lg:bg-transparent lg:p-0 dark:text-white">Register</Link>
+                        <Link to="/" className="block py-2 pr-4 pl-3 text-black rounded lg:bg-transparent lg:p-0 dark:text-white">Home</Link>
+                        <Link to="/login" className="block py-2 pr-4 pl-3 text-black rounded lg:bg-transparent lg:p-0 dark:text-white">Login</Link>
+                        <Link to="/register" className="block py-2 pr-4 pl-3 text-black rounded lg:bg-transparent lg:p-0 dark:text-white">Register</Link>
                     </>
                 )}
             </ul>

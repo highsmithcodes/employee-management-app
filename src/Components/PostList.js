@@ -92,25 +92,25 @@ export default function PostList() {
          {/* {userInfo[0].company}  */}
             {postsList?.map((post) => (
                
-                <div className="post drop-shadow-md">
-                    {/* <Link path={`/post/${post.id}`}> */}
-                        <div className="title">{post.title}</div>
-                        <div className="details">{post.content}</div>
-                        <div className="post-btm-details" style={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'space-between',
-                            marginTop: '40px',
-                            alignItems: 'center'
-                        }}>
-                            {/* <div className="categories">Category:{post.category}</div> */}
-                            <div className="more">
-                            <Link to={`/posts/${post.id}`} className="button purple">
-                                Read More
-                            </Link>
+                <div className="h-full py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-white">
+                    <div>
+                        <h5 class="text-xl text-gray-600 text-center font-bold">{post.title}</h5>
+                        {/* <div class="mt-2 flex justify-center gap-4">
+                            <h3 class="text-3xl font-bold text-gray-700">$23,988</h3>
+                            <div class="flex items-end gap-1 text-green-500">
+                                <svg class="w-3" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.00001 0L12 8H-3.05176e-05L6.00001 0Z" fill="currentColor"/>
+                                </svg>
+                                <span>2%</span>
                             </div>
-                        </div>
-                    {/* </Link> */}
+                        </div> */}
+                        <span class="block text-center text-gray-500 mb-5">{post.content}</span>
+                        <Link to={`/posts/${post.id}`} className="block items-center justify-center px-5 py-3 mt-5 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+                            Read More
+                        </Link>
+                           
+                    </div>
+
                 </div>
                 
             ))}
