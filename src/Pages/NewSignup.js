@@ -45,7 +45,7 @@ export default function NewSignup({ setFullName, setCompanyName, handleAction })
                         textAlign: 'center'
                     }}
                 >
-                    <div className='flex items-center border-2 mb-8 py-2 px-3 rounded-2xl'>
+                    <div className='block items-center border-2 mb-8 py-2 px-3 rounded-2xl w-full' style={{ minWidth: '100%' }}>
                         <TextField
                             id="name"
                             label="Full Name"
@@ -56,7 +56,7 @@ export default function NewSignup({ setFullName, setCompanyName, handleAction })
                             onChange={(e) => setFullName(e.target.value)}
                         />
                     </div>
-                    <div className='flex items-center border-2 mb-8 py-2 px-3 rounded-2xl'>
+                    <div className='block items-center border-2 mb-8 py-2 px-3 rounded-2xl w-full' style={{ minWidth: '100%' }}>
                         <TextField
                             id="company-name"
                             variant="filled"
