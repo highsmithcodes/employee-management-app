@@ -12,13 +12,13 @@ export default function LandingPageNoLogin() {
         <>
             
 
-    <section class="bg-gradient-to-t from-rose-300 ">
+    <section class="bg-rose-500 ">
         <div class="relative flex justify-between item-center max-w-5xl mx-auto pt-24 sm:pt-32 lg:pt-32 lg:h-screen xl:h-screen md:h-full flex-col">
             <div class="mx-auto place-self-center lg:col-span-7">
-                <h1 class="mb-4 text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl text-center">Create, store and manage records</h1>
-                <p class="max-w-2xl font-light text-gray-500 text-center mx-auto">Transform your companies organization game. Keep your teams engaged and contributing to the betterment of their department.</p>
+                <h1 class="mb-4 text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl text-center text-white">Create, store and manage records</h1>
+                <p class="max-w-2xl font-light text-gray-500 text-center mx-auto text-white">Transform your companies organization game. Keep your teams engaged and contributing to the betterment of their department.</p>
                 <div class="flex justify-center items-center mx-auto py-5">
-                <Link to="/login/" className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-rose-600 hover:bg-rose-800 focus:ring-4 focus:ring-rose-300">Get started
+                <Link to="/login/" className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-rose-600 rounded-lg bg-white hover:bg-rose-400 hover:text-white focus:ring-4 focus:ring-rose-300">Get started
                 <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                 </Link>           
                 </div> 
