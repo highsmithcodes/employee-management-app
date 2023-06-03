@@ -8,6 +8,8 @@ import { getUsers } from "../firebase-config";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
 import SidebarNav from "./Common/SidebarNav";
 import logo from "../logo.png";
+import { BookOpenIcon, ArrowLeftOnRectangleIcon } from '@heroicons/react/20/solid'
+
 
 export default function UserPostList() {
     const auth = getAuth();
@@ -70,38 +72,37 @@ export default function UserPostList() {
     }, [])
     return (
         <>
-        <aside class="ml-[-100%] fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-white transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
+        <aside class="ml-[-100%] fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-zinc-900 transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
             <div>
                 <div class="-mx-6 px-6 py-4">
-                    <a href="#" title="home">
-                        <img src={logo} class="w-32" alt="kept logo" />
-                    </a>
-                </div>
-
-                <div class="mt-8 text-center">
-                    <img src={logo} alt="" class="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28" />
-                    <h5 class="hidden mt-4 text-xl font-semibold text-gray-600 lg:block">{userInfo[0].fullName}</h5>
-                    <span class="hidden text-gray-400 lg:block">Company: {userInfo[0].company}</span>
+                    <Link to="#">
+                        <BookOpenIcon className="h-6 w-5 flex-none text-white" aria-hidden="true"  />
+                    </Link>
                 </div>
 
                 <ul class="space-y-2 tracking-wide mt-8">
-                    <Link to="/home/" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
+                    <Link to="/home/" className="px-0 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
                             <span class="-mr-1 font-medium">Dashboard</span>
                     </Link>
 
-                    <Link to="/create-post/" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
+                    <Link to="/create-post/" className="px-0 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
                             <span class="group-hover:text-gray-700">Create a Post</span>
                     </Link>
 
-                    <Link to="/your-posts/" className="relative px-4 py-3 flex items-center space-x-4 rounded-xl text-white bg-gradient-to-r from-rose-600 to-pink-400">
+                    <Link to="/your-posts/" className="relative px-0 py-3 flex items-center space-x-4 rounded-xl text-white">
                             <span class="group-hover:text-gray-700">Your Posts</span>
                     </Link>
                 </ul>
             </div>
 
-            <div class="px-6 -mx-6 pt-4 flex justify-between items-center border-t">
-                <button class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
-                    <span class="group-hover:text-gray-700"><button onClick={handleLogout} >Logout</button></span>
+            
+            <div class="px-6 -mx-6 pt-4 flex justify-between flex-col items-start border-t">
+                <div class="mt-0 text-center">
+                    <h5 class="hidden mt-4 text-lg font-semibold text-gray-600 lg:block">{userInfo[0].fullName} | {userInfo[0].company}</h5>
+                </div>
+                <button class="px-0 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
+                    <ArrowLeftOnRectangleIcon className="h-6 w-5 flex-none text-white" aria-hidden="true"  />
+                    <span class="text-white"><button onClick={handleLogout} >Logout</button></span>
                 </button>
             </div>
         </aside>

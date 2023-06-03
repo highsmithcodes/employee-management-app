@@ -9,15 +9,15 @@ export default function SidebarNav() {
 
     
         <ul class="space-y-2 tracking-wide mt-8">
-            <Link to="/home/" className="relative px-4 py-3 flex items-center space-x-4 rounded-xl text-white bg-gradient-to-r from-rose-600 to-pink-400">
+            <Link to="/home/" className="relative px-0 py-3 flex items-center space-x-4 rounded-xl text-white">
                     <span class="-mr-1 font-medium">Dashboard</span>
             </Link>
 
-            <Link to="/create-post/" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
+            <Link to="/create-post/" className="px-0 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
                     <span class="group-hover:text-gray-700">Create a Post</span>
             </Link>
 
-            <Link to="/your-posts/" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
+            <Link to="/your-posts/" className="px-0 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
                     <span class="group-hover:text-gray-700">Your Posts</span>
             </Link>
         </ul>

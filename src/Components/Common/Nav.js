@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { useNavigate } from 'react-router-dom'
 import logo from "../../logo.png";
+import { BookOpenIcon } from '@heroicons/react/20/solid'
 
 export default function Nav() {
     let navigate = useNavigate();
@@ -19,7 +20,7 @@ export default function Nav() {
                 <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
                     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                         <Link to="/" className="flex items-center">
-                            <img src={logo} class="mr-3 h-6 sm:h-9" alt="Logo" />
+                            <BookOpenIcon className="h-6 w-5 flex-none text-white" aria-hidden="true"  />
                             {/* <span class="self-center text-xl font-semibold whitespace-nowrap ">Kept</span> */}
                         </Link>
                         <div class="flex items-center lg:order-2">                
@@ -49,7 +50,7 @@ export default function Nav() {
             <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                 <Link to="/" className="flex items-center">
                     {/* <img src={logo} class="mr-3 h-6 sm:h-9" alt="Logo" /> */}
-                    <span class="self-center text-xl font-semibold whitespace-nowrap">Kept</span>
+                    <BookOpenIcon className="h-6 w-5 flex-none text-black" aria-hidden="true"  />
                 </Link>
                 <div class="flex items-center lg:order-2">
 
