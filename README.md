@@ -32,3 +32,4 @@ Enable email and password authentication
 
 ## 🔗 Links
 [Kept](https://main--symphonious-swan-afb5e0.netlify.app/)
+![kept-ss](https://github.com/highsmithcodes/employee-management-app/assets/17016293/d5b5346d-43a5-4fc3-954a-9e1b24a9eac2)
