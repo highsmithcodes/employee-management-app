@@ -19,6 +19,7 @@ import Nav from './Components/Common/Nav';
 import NewSignup from './Pages/NewSignup';
 import PostList from './Components/PostList';
 import UserPostList from './Components/UserPostList';
+import Footer from './Components/Common/Footer';
 // add in context
 
 
@@ -204,7 +205,7 @@ function App() {
           <Route path="/your-posts" element={<UserPostList />} />
           <Route path="/posts/:id" element={<SinglePostPage/>} />
 
-        </Routes>
+        </Routes><Footer />
       </>
     </div>
   );

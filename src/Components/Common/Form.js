@@ -12,7 +12,7 @@ export default function BasicTextFields({ title, setPassword, setEmail, handleAc
         // Add more form conditionals
 
             <div className="h-screen flex">
-          <div className="hidden lg:flex w-full lg:w-1/2 justify-around items-center bg-rose-600">
+          <div className="hidden lg:flex w-full lg:w-1/2 justify-around items-center bg-rose-500">
             <div className="bg-black opacity-20 inset-0 z-0">
 
                   </div>
@@ -79,7 +79,7 @@ export default function BasicTextFields({ title, setPassword, setEmail, handleAc
                     </div>
                 </Box>
                 <div className="block w-full mt-5">
-                    <Button title={title} handleAction={handleAction} className="text-white bg-rose-600 hover:bg-rose-800 focus:ring-4 focus:ring-rose-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 focus:outline-none" />
+                    <Button title={title} handleAction={handleAction} className="text-white bg-rose-500 hover:bg-rose-800 focus:ring-4 focus:ring-rose-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 focus:outline-none" />
                 </div>
                 <div className="small-title mt-5 text-black text-center">{message}</div>
             </FormControl>

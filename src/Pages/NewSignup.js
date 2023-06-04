@@ -12,7 +12,7 @@ export default function NewSignup({ setFullName, setCompanyName, handleAction })
     return(
 
         <div className="h-screen flex">
-          <div className="hidden lg:flex w-full lg:w-1/2 justify-around items-center bg-rose-600">
+          <div className="hidden lg:flex w-full lg:w-1/2 justify-around items-center bg-rose-500">
             <div className="bg-black opacity-20 inset-0 z-0">
 
                   </div>

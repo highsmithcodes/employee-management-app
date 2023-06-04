@@ -54,7 +54,7 @@ export default function Nav() {
                 </Link>
                 <div class="flex items-center lg:order-2">
 
-                    <Link to="/dashboard" className="text-white bg-rose-600 hover:bg-rose-800 focus:ring-4 focus:ring-rose-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 focus:outline-none">Get started</Link>
+                    <Link to="/dashboard" className="text-white bg-rose-500 hover:bg-rose-800 focus:ring-4 focus:ring-rose-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 focus:outline-none">Get started</Link>
      
                     <button data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-rose-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="mobile-menu-2" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
@@ -63,9 +63,9 @@ export default function Nav() {
                     </button>
                 </div>
                 <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
-                    <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+                    <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-4 lg:mt-0 lg:ml-10">
                     <>
-                        <Link to="/" className="block py-2 pr-4 pl-3 text-black rounded lg:bg-transparent lg:p-0 ">Home</Link>
+                        <Link to="/" className="block py-2 pr-4 pl-3 text-black rounded lg:bg-transparent lg:p-0 lg:ml-10">Home</Link>
                         <Link to="/login" className="block py-2 pr-4 pl-3 text-black rounded lg:bg-transparent lg:p-0 ">Login</Link>
                         <Link to="/register" className="block py-2 pr-4 pl-3 text-black rounded lg:bg-transparent lg:p-0 ">Register</Link>
                     </>

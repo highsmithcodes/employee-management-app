@@ -105,7 +105,7 @@ export default function PostList() {
                             </div>
                         </div> */}
                         <span class="block text-center text-gray-500 mb-5">{post.content}</span>
-                        <Link to={`/posts/${post.id}`} className="block items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-rose-600 hover:bg-rose-800 focus:ring-4 focus:ring-rose-300">
+                        <Link to={`/posts/${post.id}`} className="block items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-rose-500 hover:bg-rose-800 focus:ring-4 focus:ring-rose-300">
                             Read More
                         </Link>
                            
